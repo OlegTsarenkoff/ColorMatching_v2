@@ -13,7 +13,7 @@ struct TextValues: View {
     
     var body: some View {
         Text("\(lround(textValue))")
-            .frame(width: 35, alignment: .leading)
+            .frame(width: 35, alignment: .center)
     }
 }
 

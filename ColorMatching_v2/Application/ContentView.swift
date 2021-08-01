@@ -8,24 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
-
+    
     @State private var valueRed: Double = Double.random(in: 0...255)
     @State private var valueGreen: Double = Double.random(in: 0...255)
     @State private var valueBlue: Double = Double.random(in: 0...255)
     
-    
     var body: some View {
         ZStack {
-            Color(red: valueRed / 255,
-                  green: valueGreen / 255,
-                  blue: valueBlue / 255,
-                  opacity: 0.3)
+            LinearGradient(gradient: Gradient(
+                            colors: [Color(red: valueRed / 255,
+                                           green: valueGreen / 255,
+                                           blue: valueBlue / 255,
+                                           opacity: 0.3),
+                                     Color(red: valueGreen / 255,
+                                           green: valueBlue / 255,
+                                           blue: valueRed / 255,
+                                           opacity: 0.3)]),
+                           startPoint: .topLeading,
+                           endPoint: .bottomTrailing)
                 .edgesIgnoringSafeArea(.all)
             
-            VStack(spacing: 70) {
-                OutputColor(red: valueRed,
-                            green: valueGreen,
-                            blue: valueBlue
+            VStack(spacing: 80) {
+                ColorPreview(red: valueRed,
+                             green: valueGreen,
+                             blue: valueBlue
                 )
                 
                 VStack(spacing: 24.0) {
@@ -36,9 +42,15 @@ struct ContentView: View {
                     InputColorValue(value: $valueBlue,
                                     colorTrack: .blue)
                 }
-
             }.padding()
         }
+        .onTapGesture {
+            endEditing()
+        }
+    }
+    
+    private func endEditing() {
+        UIApplication.shared.endEditing()
     }
 }
 

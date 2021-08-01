@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OutputColor: View {
+struct ColorPreview: View {
     
     var red: Double
     var green: Double
@@ -31,6 +31,6 @@ struct OutputColor: View {
 
 struct ColorView_Previews: PreviewProvider {
     static var previews: some View {
-        OutputColor(red: 0, green: 0, blue: 255)
+        ColorPreview(red: 0, green: 0, blue: 255)
     }
 }

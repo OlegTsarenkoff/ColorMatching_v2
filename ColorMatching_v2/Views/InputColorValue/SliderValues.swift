@@ -17,3 +17,9 @@ struct SliderValues: View {
                 .accentColor(colorTrack)
    }
 }
+
+struct SliderValues_Previews: PreviewProvider {
+    static var previews: some View {
+        SliderValues(valueSlider: .constant(127), colorTrack: .red)
+    }
+}
